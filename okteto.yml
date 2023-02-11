@@ -1,15 +1,65 @@
-name: redis-example
-services:
+name: customer-redis-example
+
+# The build section defines how to build the images of your development environment
+# More info: https://www.okteto.com/docs/reference/manifest/#build
+build:
+
+  # You can use the following env vars to refer to this image in your deploy commands:
+  #  - OKTETO_BUILD_WEB_REGISTRY: image registry
+  #  - OKTETO_BUILD_WEB_REPOSITORY: image repo
+  #  - OKTETO_BUILD_WEB_IMAGE: image name
+  #  - OKTETO_BUILD_WEB_SHA: image tag sha256
   web:
-    image: $DOCKER_REGISTRY/$DOCKER_USER/$DOCKER_IMAGE:$DOCKER_TAG
-    ports:
-      - 8080:8080
+    context: .
+    dockerfile: Dockerfile
+
+# The deploy section defines how to deploy your development environment
+# More info: https://www.okteto.com/docs/reference/manifest/#deploy
+deploy:
+  compose:
+    file: docker-compose.yml
+    services:
+      - redis
+      - web
+
+# The dependencies section defines other git repositories to be deployed as part of your development environment
+# More info: https://www.okteto.com/docs/reference/manifest/#dependencies
+# dependencies:
+#   - https://github.com/okteto/sample
+
+
+# The dev section defines how to activate a development container
+# More info: https://www.okteto.com/docs/reference/manifest/#dev
+dev:
   redis:
-    image: redis:6.0.9
-    ports:
+    image: okteto/golang:1
+    command: bash
+    workdir: /data
+    securityContext:
+      capabilities:
+        add:
+          - SYS_PTRACE
+    sync:
+      - .:/data
+    forward:
+      - 2345:2345
       - 6379:6379
+    volumes:
+      - /go/pkg/
+      - /root/.cache/go-build/
+  web:
+    image: okteto/golang:1
+    command: bash
+    workdir: /app
+    securityContext:
+      capabilities:
+        add:
+          - SYS_PTRACE
+    sync:
+      - .:/app
+    forward:
+      - 2345:2345
+    volumes:
+      - /go/pkg/
+      - /root/.cache/go-build/
 
-
-# This okteto manifest.yml file uses two services, web and redis, similarly to the docker-compose.yml file. 
-# The web service uses the Docker image built from your local environment and maps the host's port 8080 to the container's port 8080. 
-# The redis service uses the Redis image version 6.0.9 and maps the host's port 6379 to the container's port 6379.
