@@ -20,16 +20,19 @@ Thank you for reaching out to us with your concerns. We would be happy to help y
 
 Our first step would be to clone the repository you provided in your email, https://github.com/okteto/customer-redis-example, and familiarize ourselves with the code and the issues you encountered.
 
-- Complete the demo:
+- Completing the demo:
 
-After reviewing the code and the repository, we have added a docker-compose file and an okteto manifest to the repository. The demo can now be run successfully on the cluster where your access has been provisioned, and you should be able to use the application as intended.
+After reviewing the code and the repository, we have added a docker-compose file and an okteto manifest to the repository. 
+The demo can now be run successfully on the cluster where your access has been provisioned, and you should be able to use the application as intended.
 
 ### What would your next steps be after reading their email and responding?
 Please see above
 
 ### Summarize what work was needed for completing the demo for the customer.
 In summary, 
-We have completed the demo for you by adding a docker-compose file and an okteto manifest to the repository you provided. To run the demo, you can simply use the docker-compose up command, and the application should start as intended. You can find more information on how to run docker-compose and okteto in our documentation.
+we have completed the demo for you by adding a docker-compose file and an okteto manifest to the repository you provided. 
+To run the demo, you can simply use the "docker-compose up" command, and the application should start as intended. 
+You can find more information on how to run docker-compose and okteto in our [documentation](https://www.okteto.com/docs/welcome/overview/).
 
 ### What improvments can Okteto make to better support this, or similar, customers in the future.
 I would suggest that Okteto consider providing more comprehensive documentation and examples for setting up and using Redis with Okteto, to make it easier for customers to get started. 
