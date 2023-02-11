@@ -1,0 +1,14 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+      - "8080:8080"
+  redis:
+    image: "redis:6.0.9"
+    ports:
+      - "6379:6379"
+
+# This docker-compose.yml file uses two services, web and redis. 
+# The web service is built from the current directory, which contains the Dockerfile and main.go file, and maps the host's port 8080 to the container's port 8080. 
+# The redis service uses the Redis image version 6.0.9 and maps the host's port 6379 to the container's port 6379.
