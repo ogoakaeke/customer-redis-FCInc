@@ -30,7 +30,7 @@ Please see above
 
 ### Summarize what work was needed for completing the demo for the customer.
 In summary, 
-we have completed the demo for you by adding a docker-compose file and an okteto manifest to the repository you provided. 
+we have completed the demo by adding a docker-compose file and an okteto manifest to the repository provided (I ran "okteto init" to configure okteto.yml). 
 To run the demo, you can simply use the "docker-compose up" command, and the application should start as intended. 
 You can find more information on how to run docker-compose and okteto in our [documentation](https://www.okteto.com/docs/welcome/overview/).
 
